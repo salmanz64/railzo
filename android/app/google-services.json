@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "372192224175",
+    "project_id": "railzo",
+    "storage_bucket": "railzo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372192224175:android:a884a02c8557f7e6b5c55a",
+        "android_client_info": {
+          "package_name": "com.example.railzo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9jpUbA2gB7SN4elJPD4B8V3rwB4cBVXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
