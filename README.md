@@ -127,11 +127,6 @@ lib/
 
 # 🚀 Getting Started
 
-## Clone repository
-```
-git clone https://github.com/your-username/railzo.git
-cd railzo
-```
 
 ## Install dependencies
 ```
@@ -152,15 +147,6 @@ Add your own:
 - Stripe publishable key
 
 ⚠️ Never commit secret keys or production credentials to GitHub.
-
----
-
-# 👨‍💻 Author
-
-**Salman Noushad**  
-Flutter Developer | Full Stack Builder  
-
-GitHub: https://github.com/your-username
 
 ---
 
