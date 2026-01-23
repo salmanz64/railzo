@@ -25,8 +25,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FirebaseConfig.initialize();
 
-  // Initialize Stripe (User will provide the key later)
-  StripeService.instance.init('YOUR_PUBLISHABLE_KEY');
+  // Initialize Stripe
+  // 1. Get your keys from Stripe Dashboard (https://dashboard.stripe.com/test/apikeys)
+  // 2. In Production, ALWAYS use a backend server to create Payment Intents.
+  StripeService.instance.init(
+    publishableKey: 'YOUR_PUBLISHABLE_KEY',
+    secretKey: 'YOUR_SECRET_KEY', // Only for demo/testing!
+    // backendUrl: 'https://your-api.com/create-payment-intent',
+  );
 
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -74,8 +80,8 @@ class AuthWrapper extends ConsumerWidget {
     return authState.when(
       data: (user) {
         if (user != null) {
-          if (user.email == 'admin@example.com' ||
-              user.email == 'admin@gmail.com') {
+          final authRepo = ref.read(authRepositoryProvider);
+          if (authRepo.isAdmin(user.email)) {
             return const AdminNavigationScreen();
           }
           return const UserNavigationScreen();

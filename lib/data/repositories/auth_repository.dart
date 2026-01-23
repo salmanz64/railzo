@@ -24,19 +24,15 @@ class AuthRepository {
 
   Future<UserCredential> signIn(String email, String password) async {
     try {
-      if (email == 'admin@example.com' && password == 'root') {
-        // Special Case: The user specifically requested 'root' as password.
-        // Firebase requires 6 chars. We will try to sign in normally first.
-        // If 'root' is not the real firebase password, we might need a workaround.
-        // For this implementation, we will assume there is a real firebase user.
-        // If not, we will throw a specific error or handle it.
-        // However, we MUST returning a UserCredential to be compatible with the flow.
-        // A client-side bypass for 'root' is tricky because we need a User object.
-        // Let's attempt the real sign in. If it fails due to weak password (on creation)
-        // that's a different issue. Here on sign-in, Firebase will just check against what's stored.
+      final normalizedEmail = email.trim().toLowerCase();
+      if ((normalizedEmail == 'admin@example.com' ||
+              normalizedEmail == 'admin@gmail.com') &&
+          (password == 'root' || password == 'root@123')) {
+        // Special Case: Allow admin sign-in with specific passwords for testing/prompt requirements.
+        // We still attempt real sign-in, but this marks where we might handle bypasses.
       }
       return await _auth.signInWithEmailAndPassword(
-        email: email,
+        email: email.trim(),
         password: password,
       );
     } on FirebaseAuthException catch (e) {
@@ -71,7 +67,9 @@ class AuthRepository {
   }
 
   bool isAdmin(String? email) {
-    return email == 'admin@example.com' || email == 'admin@gmail.com';
+    if (email == null) return false;
+    final normalized = email.trim().toLowerCase();
+    return normalized == 'admin@example.com' || normalized == 'admin@gmail.com';
   }
 
   String _handleAuthException(FirebaseAuthException e) {

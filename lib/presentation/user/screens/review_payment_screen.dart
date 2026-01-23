@@ -223,21 +223,58 @@ class ReviewPaymentScreen extends ConsumerWidget {
     double totalAmount,
   ) async {
     // 1. Stripe Payment Flow
+    // Show loading dialog
+    if (context.mounted) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(color: Colors.white),
+              SizedBox(height: 16),
+              Text(
+                'Preparing payment...',
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     final stripeSuccess = await StripeService.instance.makePayment(
       amount: totalAmount,
       currency: 'INR',
       context: context,
     );
 
+    if (context.mounted) {
+      Navigator.of(context).pop(); // Dismiss "Preparing payment" dialog
+    }
+
     if (!stripeSuccess) return;
 
     // 2. Original Booking Logic
-    // Show loading dialog
+    // Show booking loading dialog
     if (context.mounted) {
       showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) => const Center(child: CircularProgressIndicator()),
+        builder: (context) => const Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(color: Colors.white),
+              SizedBox(height: 16),
+              Text(
+                'Confirming your booking...',
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
+            ],
+          ),
+        ),
       );
     }
 
