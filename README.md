@@ -15,22 +15,7 @@ The system also includes a powerful Admin Dashboard for managing trains, routes,
 
 Built with clean MVVM architecture and scalable Firebase backend services.
 
----
 
-# 📸 Screenshots
-
-Create a folder named `screenshots/` in your project root and add:
-
-screenshots/home.png  
-screenshots/search.png  
-screenshots/seats.png  
-screenshots/payment.png  
-screenshots/booking.png  
-screenshots/admin-dashboard.png  
-screenshots/admin-trains.png  
-screenshots/admin-routes.png  
-screenshots/admin-schedule.png  
-screenshots/admin-pricing.png  
 
 ---
 
@@ -89,6 +74,19 @@ screenshots/admin-pricing.png
 
 ---
 
+# 🔑 Admin Demo Credentials
+
+Use the following credentials to access the admin panel:
+
+```
+Email: admin@gmail.com
+Password: root@123
+```
+
+⚠️ These are demo credentials for testing only.
+
+---
+
 # 🛠 Tech Stack
 
 ## Frontend
@@ -129,11 +127,6 @@ lib/
 
 # 🚀 Getting Started
 
-## Clone repository
-```
-git clone https://github.com/your-username/railzo.git
-cd railzo
-```
 
 ## Install dependencies
 ```
@@ -153,16 +146,7 @@ Add your own:
 - Firebase configuration files
 - Stripe publishable key
 
-⚠️ Never commit secret keys or credentials to GitHub.
-
----
-
-# 👨‍💻 Author
-
-**Salman Noushad**  
-Flutter Developer | Full Stack Builder  
-
-GitHub: https://github.com/your-username
+⚠️ Never commit secret keys or production credentials to GitHub.
 
 ---
 
